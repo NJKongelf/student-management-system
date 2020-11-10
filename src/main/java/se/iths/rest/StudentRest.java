@@ -17,36 +17,43 @@ public class StudentRest {
     @Inject
     StudentService studentService;
 
-@Path("new")
-@POST
-public Response createStudent(Student student){
-    studentService.createStudent(student);
-    return Response.ok(student).build();
-}
+    @Path("new")
+    @POST
+    public Response createStudent(Student student) {
+        studentService.createStudent(student);
+        return Response.ok(student).build();
+    }
 
-@Path("update")
-@PUT
-public  Response updateStudent(Student student){
-    studentService.updateTodo(student);
-    return Response.ok(student).build();
-}
+    @Path("update")
+    @PUT
+    public Response updateStudent(Student student) {
+        studentService.updateTodo(student);
+        return Response.ok(student).build();
+    }
 
-@Path("searchById/{id}")
-@GET
-public Student getStudent(@PathParam("id") Long id) {
+    @Path("searchById/{id}")
+    @GET
+    public Student getStudent(@PathParam("id") Long id) {
         return studentService.findStudentById(id);
     }
 
-@Path("searchByLastName/{lastname}")
-@GET
-public List<Student> getStudentByLastName(@PathParam("lastname") String lastN) {
-    return studentService.findStudentByLastName(lastN);
-}
+    @Path("searchByLastName/{lastname}")
+    @GET
+    public List<Student> getStudentByLastName(@PathParam("lastname") String lastN) {
+        return studentService.findStudentByLastName(lastN);
+    }
 
-
-@Path("getall")
-@GET
-public List<Student> getAllItems() {   //List<Optional<Student>>
+    @Path("getall")
+    @GET
+    public List<Student> getAllItems() {   //List<Optional<Student>>
         return studentService.getAllStudents();
+    }
+
+
+    @Path("deleteById/{id}")
+    @DELETE
+    public Response deleteStudent(@PathParam("id") Long id) {
+        studentService.removeStudent(id);
+        return Response.ok().build();
     }
 }

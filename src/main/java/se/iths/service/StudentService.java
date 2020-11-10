@@ -35,5 +35,9 @@ public class StudentService {
         return entityManager.createQuery("SELECT s from Student s where s.lastName like :lastname", Student.class).setParameter("lastname", LName).getResultList();
 
     }
+    public void removeStudent(long id){
+        Student object = entityManager.find(Student.class, id);
+        entityManager.remove(object);
+    }
 
 }
