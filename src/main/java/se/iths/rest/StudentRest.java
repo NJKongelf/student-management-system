@@ -31,16 +31,16 @@ public  Response updateStudent(Student student){
     return Response.ok(student).build();
 }
 
-@Path("{id}")
+@Path("searchById/{id}")
 @GET
 public Student getStudent(@PathParam("id") Long id) {
         return studentService.findStudentById(id);
     }
 
-@Path("{lastname}")
+@Path("searchByLastName/{lastname}")
 @GET
-public Student getStudentByLastName(@PathParam("lastname") String lastname) {
-    return studentService.findStudentByLastName(lastname);
+public List<Student> getStudentByLastName(@PathParam("lastname") String lastN) {
+    return studentService.findStudentByLastName(lastN);
 }
 
 

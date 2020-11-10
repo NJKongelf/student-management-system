@@ -13,7 +13,7 @@ public class Student {
     @NotEmpty
     private String firstName;
     @NotEmpty
-    private String lastname;
+    private String lastName;
     @NotEmpty
     private String email;
     private String phoneNumber;
@@ -35,11 +35,11 @@ public class Student {
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public String getEmail() {
