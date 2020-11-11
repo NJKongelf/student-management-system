@@ -12,7 +12,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long IdNum;
+    private Long id;
     @NotEmpty
     private String firstname;
     @NotEmpty
@@ -21,12 +21,12 @@ public class Student {
     private String email;
     private String phonenumber;
 
-    public Long getIdNum() {
-        return IdNum;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdNum(Long idNum) {
-        IdNum = idNum;
+    public void setId(Long id) {
+        this.id = id;
     }
     public String getFirstname() {
         return firstname;
