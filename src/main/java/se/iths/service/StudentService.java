@@ -4,7 +4,6 @@ import se.iths.entity.Student;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PrePersist;
 import javax.transaction.Transactional;
 
 @Transactional

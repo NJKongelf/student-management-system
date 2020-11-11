@@ -5,7 +5,7 @@
 <data-source>
   <name>java:app/MyApp/MyDS</name>
   <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
-  <url>jdbc:h2:mem:test</url>
+  <url>jdbc:h2:mem:loppish2</url>
 </data-source>
 
 </web-app>

@@ -20,33 +20,43 @@ public class StudentRest {
     @Path("new")
     @POST
     public Response createStudent(Student student) {
-        studentService.createStudent(student);
-        return Response.ok(student).build();
+        return Response.ok(studentService.createStudent(student)).build();
     }
 
     @Path("update")
     @PUT
     public Response updateStudent(Student student) {
-        studentService.updateTodo(student);
-        return Response.ok(student).build();
+        return Response.ok(studentService.updateTodo(student)).build();
     }
 
     @Path("searchById/{id}")
     @GET
     public Student getStudent(@PathParam("id") Long id) {
-        return studentService.findStudentById(id);
+        Student foundStudent = studentService.findStudentById(id);
+        if (foundStudent != null) {
+            return foundStudent;
+        } else {
+            throw new StudentNotFoundException("Student not found with id " + id);
+        }
     }
 
     @Path("searchByLastName/{lastname}")
     @GET
     public List<Student> getStudentByLastName(@PathParam("lastname") String lastN) {
-        return studentService.findStudentByLastName(lastN);
+        return list_stundentsCheck(studentService.findStudentByLastName(lastN),"No Students registered with "+lastN);
+    }
+    private List<Student> list_stundentsCheck(List<Student> studentlist,String message){
+        List<Student> studentList = studentlist;
+        if(studentList.size()>0)
+            return studentList;
+        else
+            throw new StudentNotFoundException(message);
     }
 
     @Path("getall")
     @GET
-    public List<Student> getAllItems() {   //List<Optional<Student>>
-        return studentService.getAllStudents();
+    public List<Student> getAllItems() {
+        return list_stundentsCheck(studentService.getAllStudents(),"No Students registered");
     }
 
 
