@@ -37,7 +37,7 @@ public class StudentRest {
     @Path("update")
     @PUT
     public Response updateStudent(Student student) {
-        if(verifyStudent(student))
+    if(verifyStudent(student))
             return Response.ok(studentService.updateTodo(student)).build();
         else
             throw badformatInput();

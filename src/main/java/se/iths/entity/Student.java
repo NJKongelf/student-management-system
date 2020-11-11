@@ -8,9 +8,11 @@ import javax.validation.constraints.NotEmpty;
 // student info
 @Entity
 public class Student {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long IdNum;
     @NotEmpty
     private String firstname;
     @NotEmpty
@@ -19,10 +21,13 @@ public class Student {
     private String email;
     private String phonenumber;
 
-    public Long getId() {
-        return id;
+    public Long getIdNum() {
+        return IdNum;
     }
 
+    public void setIdNum(Long idNum) {
+        IdNum = idNum;
+    }
     public String getFirstname() {
         return firstname;
     }
