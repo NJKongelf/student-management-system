@@ -20,13 +20,27 @@ public class StudentRest {
     @Path("new")
     @POST
     public Response createStudent(Student student) {
-        return Response.ok(studentService.createStudent(student)).build();
+            if(verifyStudent(student))
+                 return Response.ok(studentService.createStudent(student)).build();
+            else
+                throw badformatInput();
+    }
+    private StudentNotFoundException badformatInput(){
+        throw new StudentNotFoundException("Must have Json with fields:\n {\n \"firstname\":\"value\" \n  \"lastname\":\"value\"\n  \"email\":\"value\"\n{\n");
+    }
+
+    //
+    private boolean verifyStudent(Student student){
+        return !(student.getEmail() == null || student.getFirstname() == null || student.getLastname() == null);
     }
 
     @Path("update")
     @PUT
     public Response updateStudent(Student student) {
-        return Response.ok(studentService.updateTodo(student)).build();
+        if(verifyStudent(student))
+            return Response.ok(studentService.updateTodo(student)).build();
+        else
+            throw badformatInput();
     }
 
     @Path("searchById/{id}")

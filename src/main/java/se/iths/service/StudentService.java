@@ -31,7 +31,7 @@ public class StudentService {
 
     }
     public List<Student> findStudentByLastName(String LName){
-        return entityManager.createQuery("SELECT s from Student s where s.lastName like :lastname", Student.class).setParameter("lastname", LName).getResultList();
+        return entityManager.createQuery("SELECT s from Student s where s.lastname like :lastname", Student.class).setParameter("lastname", LName).getResultList();
 
     }
     public void removeStudent(long id){
