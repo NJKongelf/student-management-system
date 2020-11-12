@@ -1,6 +1,7 @@
 package se.iths.rest;
 
 import se.iths.entity.Student;
+import se.iths.rest.verifiers.StudentVerifier;
 import se.iths.service.StudentService;
 
 import javax.inject.Inject;
@@ -16,68 +17,47 @@ public class StudentRest {
 
     @Inject
     StudentService studentService;
+    @Inject
+    StudentVerifier verifier;
 
     @Path("new")
     @POST
     public Response createStudent(Student student) {
-            if(verifyStudent(student))
-                 return Response.ok(studentService.createStudent(student)).build();
-            else
-                throw badformatInput();
-    }
-    private StudentNotFoundException badformatInput(){
-        throw new StudentNotFoundException("Must have Json with fields:\n {\n \"firstname\":\"value\" \n  \"lastname\":\"value\"\n  \"email\":\"value\"\n{\n");
-    }
-
-    //
-    private boolean verifyStudent(Student student){
-        return !(student.getEmail() == null || student.getFirstname() == null || student.getLastname() == null);
+        verifier.verifyStudent(student);
+        return Response.ok(studentService.createStudent(student)).build();
     }
 
     @Path("update")
     @PUT
     public Response updateStudent(Student student) {
-    if(verifyStudent(student))
-            return Response.ok(studentService.updateTodo(student)).build();
-        else
-            throw badformatInput();
+        verifier.verifyStudent(student);
+        return Response.ok(studentService.updateTodo(student)).build();
     }
 
     @Path("searchById/{id}")
     @GET
     public Student getStudent(@PathParam("id") Long id) {
-        Student foundStudent = studentService.findStudentById(id);
-        if (foundStudent != null) {
-            return foundStudent;
-        } else {
-            throw new StudentNotFoundException("Student not found with id " + id);
-        }
+      return  verifier.StudentExist( studentService.findStudentById(id),id);
     }
 
     @Path("searchByLastName/{lastname}")
     @GET
     public List<Student> getStudentByLastName(@PathParam("lastname") String lastN) {
-        return list_stundentsCheck(studentService.findStudentByLastName(lastN),"No Students registered with "+lastN);
-    }
-    private List<Student> list_stundentsCheck(List<Student> studentlist,String message){
-        List<Student> studentList = studentlist;
-        if(studentList.size()>0)
-            return studentList;
-        else
-            throw new StudentNotFoundException(message);
+        return verifier.list_stundentsCheck(studentService.findStudentByLastName(lastN),"No student registered with last name: "+lastN);
     }
 
     @Path("getall")
     @GET
     public List<Student> getAllItems() {
-        return list_stundentsCheck(studentService.getAllStudents(),"No Students registered");
+        return verifier.list_stundentsCheck(studentService.getAllStudents(),"No students registered");
     }
-
 
     @Path("deleteById/{id}")
     @DELETE
     public Response deleteStudent(@PathParam("id") Long id) {
-        studentService.removeStudent(id);
-        return Response.ok().build();
+        return verifier.StudentExist(studentService.findStudentById(id),studentService);
     }
+
+
+
 }
