@@ -1,4 +1,4 @@
-# Project
+# Student-Management-System Complex Java lab 1
 ## **Project creation**
 
 - This Java EE project for the Java 19 course from ITHS was developed by Nicklas Johansson and Luis Gutierrez. We both pair-coded and collaborated to create this laboratorium.
