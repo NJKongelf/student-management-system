@@ -1,7 +1,7 @@
 package se.iths.rest.verifiers;
 import se.iths.entity.Student;
-import se.iths.rest.exeptions.BadFormatInputException;
-import se.iths.rest.exeptions.StudentNotFoundException;
+import se.iths.rest.exceptions.BadFormatInputException;
+import se.iths.rest.exceptions.StudentNotFoundException;
 import se.iths.service.StudentService;
 
 import javax.ws.rs.core.MediaType;
