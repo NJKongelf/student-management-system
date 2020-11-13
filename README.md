@@ -5,7 +5,10 @@
 
 ## **Projects obstacles**
 
-- bla bla bla
+- One issue we had during the process of building the rest Endpoints was that we got the "PUT" Method only inserted new data and not 
+updated the specific record. The reason behind this was a misunderstanding on how CDI operated with the "@GeneratedValue".
+We believed we didn't need to have a method the sets new value. After lots of searching we added the method and like magic the "PUT" method 
+started to act as it should.  
 
 # Endpoints
 
