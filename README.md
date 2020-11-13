@@ -107,7 +107,7 @@
 # POST
 |Method|Description|URL|
 |---|---|--|
-|POST|Create a new studen in registry|http://localhost:8080/student-management-system/api/v1/student/new|
+|POST|Create a new student record in registry|http://localhost:8080/student-management-system/api/v1/student/new|
 
 |Request Body Example|
 |---|
@@ -136,7 +136,7 @@
 # PUT
 |Method|Description|URL|
 |---|---|--|
-|PUT|Update an existing studen in registry|http://localhost:8080/student-management-system/api/v1/student/update|
+|PUT|Update an existing student record in registry|http://localhost:8080/student-management-system/api/v1/student/update|
 
 |Request Body Example and Response Body Example|
 |---|
@@ -154,7 +154,7 @@
 # DELETE
 |Method|Description|URL|
 |---|---|--|
-|DELETE|Remove an existing studen with given ID from registry|http://localhost:8080/student-management-system/api/v1/student/deleteById/{id}|
+|DELETE|Remove an existing student with given ID from registry|http://localhost:8080/student-management-system/api/v1/student/deleteById/{id}|
 
 |Response Body Example|
 |---|
@@ -163,4 +163,3 @@
 ```ruby
 Student with ID 3 removed from registry
 ```
-
