@@ -64,9 +64,9 @@
 |---|---|--|
 |GET|Get student with given ID|http://localhost:8080/student-management-system/api/v1/student/searchById/{id}|
 
-|Response Body Example|
-|---|
-|Example URL: http://localhost:8080/student-management-system/api/v1/student/searchById/2|
+|Response Body Example||
+|---|---|
+|Example URL| http://localhost:8080/student-management-system/api/v1/student/searchById/2|
 
 ```ruby
   {
@@ -81,9 +81,9 @@
 |---|---|--|
 |GET|Get student with given last name|http://localhost:8080/student-management-system/api/v1/student/searchByLastName/{lastname}|
 
-|Response Body Example|
-|---|
-|Example URL : http://localhost:8080/student-management-system/api/v1/student/searchByLastName/Gutierrez|
+|Response Body Example||
+|---|---|
+|Example URL| http://localhost:8080/student-management-system/api/v1/student/searchByLastName/Gutierrez|
  
 ```ruby
   [
@@ -156,10 +156,11 @@
 |---|---|--|
 |DELETE|Remove an existing student with given ID from registry|http://localhost:8080/student-management-system/api/v1/student/deleteById/{id}|
 
-|Response Body Example|
-|---|
-|Example URL : http://localhost:8080/student-management-system/api/v1/student/deleteById/3|
+|Response Body Example||
+|---|---|
+|Example URL| http://localhost:8080/student-management-system/api/v1/student/deleteById/3|
 
 ```ruby
 Student with ID 3 removed from registry
 ```
+
