@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+
 @Entity
 public class Student {
 
@@ -19,13 +20,15 @@ public class Student {
     private String email;
     private String phonenumber;
 
-    public Student(@NotEmpty String firstname, @NotEmpty String lastname, @NotEmpty String email, String phonenumber){
+    public Student(@NotEmpty String firstname, @NotEmpty String lastname, @NotEmpty String email, String phonenumber) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phonenumber = phonenumber;
     }
-    public Student(){}
+
+    public Student() {
+    }
 
 
     public Long getId() {
@@ -35,6 +38,7 @@ public class Student {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getFirstname() {
         return firstname;
     }

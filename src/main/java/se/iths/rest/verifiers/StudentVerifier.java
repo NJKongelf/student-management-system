@@ -1,4 +1,5 @@
 package se.iths.rest.verifiers;
+
 import se.iths.entity.Student;
 import se.iths.rest.exceptions.BadFormatInputException;
 import se.iths.rest.exceptions.StudentNotFoundException;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class StudentVerifier {
     public BadFormatInputException badformatInput() {
-        throw new BadFormatInputException("JSON object with student's information must include fields:\n {\n \"firstname\":\"value\" \n  \"lastname\":\"value\"\n  \"email\":\"value\"\n{\n");
+        throw new BadFormatInputException("JSON object with student's information must include fields:\n {\n \"firstname\":\"value\" \n  \"lastname\":\"value\"\n  \"email\":\"value\"\n}\n");
     }
 
     public void verifyStudent(Student student) {
@@ -36,6 +37,7 @@ public class StudentVerifier {
         }
 
     }
+
     public Student StudentExist(Student foundstudent, Long id) {
         if (foundstudent != null) {
             return foundstudent;

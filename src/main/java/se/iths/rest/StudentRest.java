@@ -9,6 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+
 @Path("student")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -37,27 +38,25 @@ public class StudentRest {
     @Path("searchById/{id}")
     @GET
     public Student getStudent(@PathParam("id") Long id) {
-      return  verifier.StudentExist(studentService.findStudentById(id),id);
+        return verifier.StudentExist(studentService.findStudentById(id), id);
     }
 
     @Path("searchByLastName/{lastname}")
     @GET
-    public List<Student> getStudentByLastName(@PathParam("lastname") String lastN) {
-        return verifier.list_stundentsCheck(studentService.findStudentByLastName(lastN),"No student registered with last name: "+lastN);
+    public List<Student> getStudentByLastName(@PathParam("lastname") String lastName) {
+        return verifier.list_stundentsCheck(studentService.findStudentByLastName(lastName), "No student registered with last name " + lastName);
     }
 
     @Path("getall")
     @GET
     public List<Student> getAllItems() {
-        return verifier.list_stundentsCheck(studentService.getAllStudents(),"No students registered");
+        return verifier.list_stundentsCheck(studentService.getAllStudents(), "No students registered");
     }
 
     @Path("deleteById/{id}")
     @DELETE
     public Response deleteStudent(@PathParam("id") Long id) {
-        return verifier.StudentExist(studentService.findStudentById(id),studentService);
+        return verifier.StudentExist(studentService.findStudentById(id), studentService);
     }
-
-
 
 }
