@@ -8,7 +8,6 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 public class Student {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,6 +18,15 @@ public class Student {
     @NotEmpty
     private String email;
     private String phonenumber;
+
+    public Student(@NotEmpty String firstname, @NotEmpty String lastname, @NotEmpty String email, String phonenumber){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phonenumber = phonenumber;
+    }
+    public Student(){}
+
 
     public Long getId() {
         return id;

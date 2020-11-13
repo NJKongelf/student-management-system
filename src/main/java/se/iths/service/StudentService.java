@@ -19,7 +19,6 @@ public class StudentService {
 
     public Student updateTodo(Student student) {
         entityManager.merge(student);
-
         return student;
     }
 

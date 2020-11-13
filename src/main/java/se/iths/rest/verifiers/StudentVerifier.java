@@ -3,12 +3,14 @@ import se.iths.entity.Student;
 import se.iths.rest.exeptions.BadFormatInputException;
 import se.iths.rest.exeptions.StudentNotFoundException;
 import se.iths.service.StudentService;
+
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class StudentVerifier {
     public BadFormatInputException badformatInput() {
-        throw new BadFormatInputException("Json object must include fields:\n {\n \"firstname\":\"value\" \n  \"lastname\":\"value\"\n  \"email\":\"value\"\n{\n");
+        throw new BadFormatInputException("JSON object with student's information must include fields:\n {\n \"firstname\":\"value\" \n  \"lastname\":\"value\"\n  \"email\":\"value\"\n{\n");
     }
 
     public void verifyStudent(Student student) {
@@ -26,14 +28,14 @@ public class StudentVerifier {
 
     public Response StudentExist(Student foundstudent, StudentService studentService) {
         if (!(foundstudent == null)) {
+            long removed = foundstudent.getId();
             studentService.removeStudent(foundstudent.getId());
-            return Response.ok().build();
+            return Response.ok().entity("Student with ID " + removed + " removed from registry").type(MediaType.TEXT_PLAIN_TYPE).build();
         } else {
-            throw new StudentNotFoundException("student attempting to delete is not registered");
+            throw new StudentNotFoundException("Student attempting to delete is not registered");
         }
 
     }
-
     public Student StudentExist(Student foundstudent, Long id) {
         if (foundstudent != null) {
             return foundstudent;

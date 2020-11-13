@@ -37,7 +37,7 @@ public class StudentRest {
     @Path("searchById/{id}")
     @GET
     public Student getStudent(@PathParam("id") Long id) {
-      return  verifier.StudentExist( studentService.findStudentById(id),id);
+      return  verifier.StudentExist(studentService.findStudentById(id),id);
     }
 
     @Path("searchByLastName/{lastname}")
