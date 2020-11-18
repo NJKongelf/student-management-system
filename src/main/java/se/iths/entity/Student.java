@@ -1,10 +1,9 @@
 package se.iths.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -20,6 +19,12 @@ public class Student {
     private String email;
     private String phonenumber;
 
+    @ManyToMany //(cascade = CascadeType.ALL)
+    @JoinTable(name = "student_subject",
+            joinColumns = { @JoinColumn(name = "fk_student") },
+            inverseJoinColumns = { @JoinColumn(name = "fk_subject") })
+    private Set<Subject> subjects = new HashSet<Subject>();
+
     public Student(@NotEmpty String firstname, @NotEmpty String lastname, @NotEmpty String email, String phonenumber) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -30,6 +35,13 @@ public class Student {
     public Student() {
     }
 
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
+    }
 
     public Long getId() {
         return id;
